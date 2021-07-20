@@ -1,0 +1,34 @@
+#+TITLE: Programming the JB3x3
+#+AUTHOR: Jake Boxerman
+#+DATE: [2021-07-14 Wed]
+:PROPERTIES:
+#+OPTIONS:
+#+SETUPFILE: ~/Dropbox/Mackup/emacs-stuff/org/setupfiles_html/readtheorg.setup
+:END:
+
+* Links
+https://beta.docs.qmk.fm/
+
+* General Steps
+1) Setup QMK environment
+   + https://beta.docs.qmk.fm/tutorial/newbs_getting_started
+2) Make jb3x3 keyboard: ~qmk new-keymap -kb jb3x3~
+3) Make new folder in ~jb3x3/keymaps~ (if it gets created from the above step just transfer files)
+4) Make new ~keymap.c~ file
+5) Edit/configure keymap (written in C obviously)
+   + Reference section [[Notes re: Programming]]
+6) Compile: ~qmk compile -kb jb3x3 -km <keymap>~
+7) Flash the .hex file to keyboard, I recommend the GUI tool but I'm sure you'll figure it out
+   + When flashing you need to put the Arduino into the proper mode, I think just short GND/RST, then plug in the keyboard, then disconnect
+   + It'll show up in the software a bit differently
+   + Let me know if you have issues with this, haven't done it in a while
+     
+* Notes re: Programming
++ ~jakebox/keymap.c~ is a good reference
++ https://beta.docs.qmk.fm/using-qmk/simple-keycodes/keycodes
++ [[https://beta.docs.qmk.fm/using-qmk/simple-keycodes/feature_advanced_keycodes][Modifier keys]] are keys wrapped in, for example, ~LCTRL(kc)~
+  * These can of course be stacked
++ Can use ~MO(#)~ to shift to a mod layer easily (this is my preferred method)
+  * While they key is held shift to another layer
+  * Corresponding key on the layer you're shifting to needs to have ~KC_TRNS~
+  * See ~teacher_mac/keymap.c~

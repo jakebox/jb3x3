@@ -1,0 +1,2 @@
+DEFAULT_FOLDER = jb3x3/rev1
+EXTRAKEY_ENABLE = yes
