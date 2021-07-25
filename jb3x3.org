@@ -1,15 +1,30 @@
-#+TITLE: Programming the JB3x3
-#+AUTHOR: Jake Boxerman
-#+DATE: [2021-07-14 Wed]
+#+TITLE: JB3x3
 :PROPERTIES:
 #+OPTIONS:
 #+SETUPFILE: ~/Dropbox/Mackup/emacs-stuff/org/setupfiles_html/readtheorg.setup
 :END:
 
-* Links
+* JB3x3
+#+ATTR_HTML: :width 400px
+[[./Photos/jb3x3_irl.jpg]]
+
+** Overview
+The jb3x3 is a cheap, dead simple 3x3 macropad powered by an Arduino Pro Micro, chosen for its slim profile, HID capability, and low cost.
+
+The PCB files for production can be found in ~jb3x3_pcb_files.zip~ where they can be uploaded to a service such as JLCPCB. The bottom plate is stored in the ~3x3pcb.dxf~ file.
+
+Originally designed for use with Zoom, the keypad has infinite uses – Discord shortcuts, convenient macro keys, or control a livestream with ease.
+
+For a batch of 10 PCBs the cost came out to less than $15 per unit, not including labor/solder/tools.
+
+** Parts
+The keypad is designed for a Cherry MX-compatible switch, meaning many common, cheap switches can be used. I used "Otemu" switches - very cheap but functional. The controller is designed to be an Arduino Pro Micro, ideally flashed with QMK (but manual programming is of course possible).
+
+* Programming the keypad
+** Links
 https://beta.docs.qmk.fm/
 
-* General Steps
+** General Steps
 1) Setup QMK environment
    + https://beta.docs.qmk.fm/tutorial/newbs_getting_started
 2) Make jb3x3 keyboard: ~qmk new-keymap -kb jb3x3~
@@ -23,7 +38,7 @@ https://beta.docs.qmk.fm/
    + It'll show up in the software a bit differently
    + Let me know if you have issues with this, haven't done it in a while
      
-* Notes re: Programming
+** Notes re: Programming
 + ~jakebox/keymap.c~ is a good reference
 + https://beta.docs.qmk.fm/using-qmk/simple-keycodes/keycodes
 + [[https://beta.docs.qmk.fm/using-qmk/simple-keycodes/feature_advanced_keycodes][Modifier keys]] are keys wrapped in, for example, ~LCTRL(kc)~
